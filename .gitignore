@@ -1,5 +1,8 @@
 HELP.md
-target/
+# Ignore target directory except JAR files
+/target/
+!target/*.jar
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
