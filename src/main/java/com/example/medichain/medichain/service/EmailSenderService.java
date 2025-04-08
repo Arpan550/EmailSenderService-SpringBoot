@@ -16,7 +16,7 @@ public class EmailSenderService {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-            // Build an elegant HTML email with styled token display.
+//          Build an elegant HTML email with styled token display.
             String htmlMsg = "<!DOCTYPE html>" +
                     "<html>" +
                     "<head>" +
@@ -53,10 +53,11 @@ public class EmailSenderService {
                     "</body>" +
                     "</html>";
 
+
             helper.setText(htmlMsg, true); // true indicates HTML content
             helper.setTo(toEmail);
             helper.setSubject(subject);
-            helper.setFrom("arpanbhattacharya5356@gmail.com"); // Ensure this is a valid sender address
+            helper.setFrom("noreply.medichain@gmail.com"); // Ensure this is a valid sender address
 
             javaMailSender.send(mimeMessage);
             System.out.println("HTML email sent successfully to " + toEmail);
