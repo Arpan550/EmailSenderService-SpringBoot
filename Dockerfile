@@ -1,14 +1,12 @@
-# Use a lightweight Java image
+# Stage 1: Build
+FROM maven:3.8.7-eclipse-temurin-17 AS builder
+WORKDIR /build
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run
 FROM eclipse-temurin:17-jdk-jammy
-
-# Set the working directory
 WORKDIR /app
-
-# Copy the built jar file into the container
-COPY target/*.jar app.jar
-
-# Expose port 8080
+COPY --from=builder /build/target/*.jar app.jar
 EXPOSE 8080
-
-# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
