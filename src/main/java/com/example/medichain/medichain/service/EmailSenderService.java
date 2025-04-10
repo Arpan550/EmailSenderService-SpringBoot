@@ -1,5 +1,6 @@
 package com.example.medichain.medichain.service;
 
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -88,7 +89,7 @@ public class EmailSenderService {
             helper.setText(htmlMsg, true); // true indicates HTML content
             helper.setTo(toEmail);
             helper.setSubject(subject);
-            helper.setFrom("noreply.medichain@gmail.com"); // Ensure this is a valid sender address
+            helper.setFrom(new InternetAddress("noreply.medichain@gmail.com", "MediChain"));
 
             javaMailSender.send(mimeMessage);
             System.out.println("HTML email sent successfully to " + toEmail);
