@@ -70,9 +70,9 @@ public class EmailSenderService {
                     "  <div class='email-footer'>" +
                     "  <div class='footer-logo' style='color: #000;'>MediChain</div>" +
                     "    <div class='footer-links'>" +
-                    "      <a href='#'>Privacy Policy</a> | " +
-                    "      <a href='#'>Terms of Service</a> | " +
-                    "      <a href='#'>Help Center</a>" +
+                    "      <a href='https://medichain.pages.dev/privacy-policy' target='_blank'>Privacy Policy</a> | " +
+                    "      <a href='https://medichain.pages.dev/terms-of-service' target='_blank'>Terms of Service</a> | " +
+                    "      <a href='https://medichain.pages.dev/help-center' target='_blank'>Help Center</a>" +
                     "    </div>" +
                     "    <div class='social-links'>" +
                     "    </div>" +
