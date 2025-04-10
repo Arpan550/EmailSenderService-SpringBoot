@@ -1,11 +1,11 @@
-# Stage 1: Build with JDK 24
-FROM eclipse-temurin:24-jdk-jammy AS build
+# Stage 1: Build with JDK 17
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Stage 2: Run with JDK 24
-FROM eclipse-temurin:24-jdk
+# Stage 2: Run with JDK 17
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
 COPY --from=build /app/target/medichain-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
