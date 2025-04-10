@@ -2,7 +2,7 @@
 FROM eclipse-temurin:24-jdk-jammy AS build
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run with JDK 24
 FROM eclipse-temurin:24-jdk
