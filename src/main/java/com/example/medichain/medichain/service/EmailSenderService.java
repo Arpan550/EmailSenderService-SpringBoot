@@ -97,4 +97,77 @@ public class EmailSenderService {
             System.out.println("Error while sending email: " + e.getMessage());
         }
     }
+
+    public void sendWelcomeEmail(String userEmail, String userName, String userRole, String userId) {
+        try {
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+            String subject = "Welcome to MediChain 🎉";
+
+            String htmlMsg = "<!DOCTYPE html>" +
+                    "<html lang='en'>" +
+                    "<head>" +
+                    "  <meta charset='UTF-8'>" +
+                    "  <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+                    "  <title>" + subject + "</title>" +
+                    "  <style>" +
+                    // ... your entire CSS from above here ...
+                    "  </style>" +
+                    "</head>" +
+                    "<body>" +
+                    "<div class='email-container'>" +
+                    "  <div class='email-header'>" +
+                    "    <div class='header-decoration'></div>" +
+                    "    <div class='logo'>MediChain</div>" +
+                    "  </div>" +
+                    "  <div class='email-content'>" +
+                    "    <h1>Welcome to MediChain!</h1>" +
+                    "    <p>Thank you for registering with MediChain. We're excited to have you on board! Your account has been successfully created and is now ready to use.</p>" +
+                    "    <div class='welcome-container'>" +
+                    "      <div class='welcome-message'>Hello, " + userName + "!</div>" +
+                    "      <div class='account-info'>" +
+                    "        <div><span class='info-label'>Role:</span> " + userRole + "</div>" +
+                    "        <div><span class='info-label'>Email:</span> " + userEmail + "</div>" +
+                    "        <div><span class='info-label'>User ID:</span> " + userId + "</div>" +
+                    "      </div>" +
+                    "    </div>" +
+                    "    <p>With your MediChain account, you can now access our blockchain-based medicine tracking platform, designed to ensure transparency and security throughout the pharmaceutical supply chain.</p>" +
+                    "    <div class='features-list'>" +
+                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Track medicines from manufacturer to pharmacy</div></div>" +
+                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Verify authenticity and prevent counterfeit products</div></div>" +
+                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Manage inventory and transaction history</div></div>" +
+                    "    </div>" +
+                    "    <div class='security-notice'>" +
+                    "      <span>For your security, please keep your login credentials confidential and ensure you log out when accessing MediChain from public devices.</span>" +
+                    "    </div>" +
+                    "  </div>" +
+                    "  <div class='email-footer'>" +
+                    "    <div class='footer-logo' style='color: #000;'>MediChain</div>" +
+                    "    <div class='footer-links'>" +
+                    "      <a href='#'>Privacy Policy</a> | " +
+                    "      <a href='#'>Terms of Service</a> | " +
+                    "      <a href='#'>Help Center</a>" +
+                    "    </div>" +
+                    "    <div class='social-links'></div>" +
+                    "    <div class='copyright'>© 2025 MediChain. All rights reserved.</div>" +
+                    "  </div>" +
+                    "</div>" +
+                    "</body>" +
+                    "</html>";
+
+            helper.setText(htmlMsg, true);
+            helper.setTo(userEmail);
+            helper.setSubject(subject);
+            helper.setFrom(new InternetAddress("noreply.medichain@gmail.com", "MediChain"));
+
+            javaMailSender.send(mimeMessage);
+            System.out.println("🎉 Welcome email sent to " + userEmail);
+
+        } catch (Exception e) {
+            System.err.println("❌ Error sending welcome email: " + e.getMessage());
+        }
+    }
+
+
 }
