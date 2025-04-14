@@ -112,7 +112,30 @@ public class EmailSenderService {
                     "  <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
                     "  <title>" + subject + "</title>" +
                     "  <style>" +
-                    // ... your entire CSS from above here ...
+                    "    body, html { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f2f2f2; color: #000; line-height: 1.6; }" +
+                    "    .email-container { max-width: 620px; margin: auto; background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.2); overflow: hidden; }" +
+                    "    .email-header { padding: 35px 40px 20px; text-align: center; position: relative; }" +
+                    "    .header-decoration { height: 5px; background: linear-gradient(90deg, #222, #555); }" +
+                    "    .logo { font-size: 26px; font-weight: 700; margin: 10px 0; position: relative; }" +
+                    "    .logo::after { content: ''; width: 40px; height: 2px; background: #000; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); }" +
+                    "    .email-content { padding: 15px 50px 40px; }" +
+                    "    h1 { font-size: 28px; font-weight: 600; text-align: center; color: #000; }" +
+                    "    p { font-size: 16px; color: #333; }" +
+                    "    .welcome-container { background: rgba(240,240,240,0.6); padding: 25px; margin: 35px 0; border-radius: 16px; border: 1px solid rgba(0,0,0,0.08); text-align: center; }" +
+                    "    .welcome-message { font-size: 18px; color: #000; font-weight: 500; margin-bottom: 15px; }" +
+                    "    .account-info { font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 16px; color: #333; background: rgba(255,255,255,0.65); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); text-align: left; margin: 15px 0; }" +
+                    "    .info-label { font-weight: 600; display: inline-block; width: 100px; }" +
+                    "    .features-list { margin: 25px 0; text-align: left; }" +
+                    "    .feature-item { display: flex; align-items: center; margin-bottom: 15px; }" +
+                    "    .feature-icon { width: 30px; height: 30px; background-color: rgba(0,0,0,0.05); border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; }" +
+                    "    .feature-text { flex: 1; }" +
+                    "    .security-notice { background: rgba(240,240,240,0.6); padding: 15px 20px; margin: 30px 0; font-size: 14px; color: #555; border-left: 4px solid #000; border-radius: 12px; }" +
+                    "    .email-footer { text-align: center; padding: 30px 40px; font-size: 13px; color: #777; border-top: 1px solid rgba(0,0,0,0.05); background: rgba(245,245,245,0.7); }" +
+                    "    .footer-links a { color: #777; margin: 0 10px; text-decoration: none; }" +
+                    "    .footer-logo { font-weight: 600; font-size: 16px; margin-bottom: 10px; }" +
+                    "    .social-links { margin: 20px 0; }" +
+                    "    .social-icon { display: inline-block; width: 20px; height: 20px; margin: 0 8px; background-color: #ccc; border-radius: 50%; }" +
+                    "    @media screen and (max-width: 600px) { .email-content { padding: 25px; } h1 { font-size: 22px; } }" +
                     "  </style>" +
                     "</head>" +
                     "<body>" +
@@ -134,9 +157,18 @@ public class EmailSenderService {
                     "    </div>" +
                     "    <p>With your MediChain account, you can now access our blockchain-based medicine tracking platform, designed to ensure transparency and security throughout the pharmaceutical supply chain.</p>" +
                     "    <div class='features-list'>" +
-                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Track medicines from manufacturer to pharmacy</div></div>" +
-                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Verify authenticity and prevent counterfeit products</div></div>" +
-                    "      <div class='feature-item'><div class='feature-icon'>✓</div><div class='feature-text'>Manage inventory and transaction history</div></div>" +
+                    "      <div class='feature-item'>" +
+                    "        <div class='feature-icon'>✓</div>" +
+                    "        <div class='feature-text'>Track medicines from manufacturer to pharmacy</div>" +
+                    "      </div>" +
+                    "      <div class='feature-item'>" +
+                    "        <div class='feature-icon'>✓</div>" +
+                    "        <div class='feature-text'>Verify authenticity and prevent counterfeit products</div>" +
+                    "      </div>" +
+                    "      <div class='feature-item'>" +
+                    "        <div class='feature-icon'>✓</div>" +
+                    "        <div class='feature-text'>Manage inventory and transaction history</div>" +
+                    "      </div>" +
                     "    </div>" +
                     "    <div class='security-notice'>" +
                     "      <span>For your security, please keep your login credentials confidential and ensure you log out when accessing MediChain from public devices.</span>" +
@@ -149,7 +181,8 @@ public class EmailSenderService {
                     "      <a href='#'>Terms of Service</a> | " +
                     "      <a href='#'>Help Center</a>" +
                     "    </div>" +
-                    "    <div class='social-links'></div>" +
+                    "    <div class='social-links'>" +
+                    "    </div>" +
                     "    <div class='copyright'>© 2025 MediChain. All rights reserved.</div>" +
                     "  </div>" +
                     "</div>" +
